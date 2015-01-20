@@ -134,7 +134,7 @@ Generator.prototype.rhcAppCreate = function rhcAppCreate() {
   var done = this.async();
 
   this.log(chalk.bold("\nCreating your OpenShift hosting environment, this may take a couple minutes..."));
-  var child = exec('rhc app create '+this.deployedName+' nodejs-0.10 mongodb-2.4 -s --noprompt --no-git NODE_ENV=production', { cwd: 'dist' }, function (err, stdout, stderr) {
+  var child = exec('rhc app create '+this.deployedName+' nodejs-0.10 mongodb-2.4 --noprompt --no-git NODE_ENV=production', { cwd: 'dist' }, function (err, stdout, stderr) {
     var lines = stdout.split('\n');
     this.log(stdout);
     if (stdout.search('Not authenticated') >= 0 || stdout.search('Invalid characters found in login') >= 0) {
